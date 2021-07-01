@@ -4,13 +4,3 @@ remote_domain: 'io37.ch'
 server: 'cheboksaru'
 
 email: ''
-
-# For use with webserver playbook
-ruby_version: '2.7.1'
-deploy_user: '{{ deploy_user }}'
-deploy_user_password: '{{ user_password }}'
-deploy_user_public_key_local_path: '~/.ssh/{{ server }}/deploy_rsa'
-postgresql_version: '13'
-postgresql_locales:
-  - 'en_US.UTF-8'
-  - 'en_GB.UTF-8'

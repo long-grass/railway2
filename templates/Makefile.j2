@@ -6,5 +6,4 @@ repo:
 	gh secret set ROOT_RSA < ~/.ssh/{{ server }}/root_rsa
 	gh secret set DEPLOY_RSA < ~/.ssh/{{ server }}/deploy_rsa
 	gh secret set MASTER_KEY < config/master.key
-maybe:
 	git push origin main

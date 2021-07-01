@@ -7,26 +7,11 @@ Deploys to https://{{ url }}
 ## Whats included
 
 - Ruby on Rails starter application
-- Pre-configured Ansible playbook with ansistrano for deployment
-
-## Prerequisites
-
-1. ansistrano-deploy
-
-```
-ansible-galaxy install ansistrano.deploy
-```
+- Pre-configured Ansible playbook with ansistrano for deployment via github action
 
 ## How to run
 
-Create this repo if it doesn't exist and push
 
-```
-# gh repo create {{ app_name }} --public -y
-# git push origin main
-```
-
-## Setup
 ```
 # make setup
 ```
@@ -38,14 +23,20 @@ Runs ansible-playbook to
 - Configure nginx for correct url
 - Set up ssl via lets-encrypt
 
-## Deploy
+## Repo
 ```
-# make deploy
+# make repo
 ```
 
+Creats github repo and adds secrets to repo. Github action created and ready for deploy
 Runs ansible-playbook to deploy to correct url
 
-Site should be available at https://{{ url }}. If you haven't done anything with the Rails app yet, you can still check if the deployment was successful at https://{{ url }}/success.html
+## Deploy
+```
+# git push origin main
+```
+
+Github action will trigger and deploy via ansistrano to https://{{ url }}. If you haven't done anything with the Rails app yet, you can still check if the deployment was successful at https://{{ url }}/success.html
 
 ## Technology Stack
 
@@ -55,5 +46,5 @@ Site should be available at https://{{ url }}. If you haven't done anything with
 - Nginx
 - Postgresql
 - Ansible 2.9
-- Ubuntu 20.04 hosted at Contabo
+- Ubuntu 21.04 hosted at Contabo
 - LetsEncrypt Certbot
