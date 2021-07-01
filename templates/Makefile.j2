@@ -1,0 +1,10 @@
+setup:
+	ssh-keyscan {{ url }} >> ~/.ssh/known_hosts
+	ansible-playbook -e @.deploy/secrets -i .deploy/hosts.ini .deploy/setup.yml
+repo:
+	gh repo create {{ app_name }} --private -y
+	gh secret set ROOT_RSA < ~/.ssh/{{ server }}/root_rsa
+	gh secret set DEPLOY_RSA < ~/.ssh/{{ server }}/deploy_rsa
+	gh secret set MASTER_KEY < config/master.key
+maybe:
+	git push origin main

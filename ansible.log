@@ -1,0 +1,96 @@
+2021-07-01 12:55:04,810 p=38352 u=safety n=ansible | [WARNING]: Unable to parse /Users/safety/ansible/rails/hosts.ini as an inventory source
+
+2021-07-01 12:55:04,811 p=38352 u=safety n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-07-01 12:55:04,819 p=38352 u=safety n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not
+match 'all'
+
+2021-07-01 12:55:07,818 p=38352 u=safety n=ansible | PLAY [This is a hello-world example] ***************************************************************************
+2021-07-01 12:55:07,874 p=38352 u=safety n=ansible | TASK [Gathering Facts] *****************************************************************************************
+2021-07-01 12:55:09,245 p=38352 u=safety n=ansible | ok: [localhost]
+2021-07-01 12:55:09,259 p=38352 u=safety n=ansible | TASK [check for rails app] *************************************************************************************
+2021-07-01 12:55:09,836 p=38352 u=safety n=ansible | ok: [localhost]
+2021-07-01 12:55:09,854 p=38352 u=safety n=ansible | TASK [exit if rails app already exists with this name] *********************************************************
+2021-07-01 12:55:09,969 p=38352 u=safety n=ansible | skipping: [localhost]
+2021-07-01 12:55:09,988 p=38352 u=safety n=ansible | TASK [rails new.] **********************************************************************************************
+2021-07-01 12:56:25,121 p=38352 u=safety n=ansible | changed: [localhost]
+2021-07-01 12:56:25,151 p=38352 u=safety n=ansible | TASK [Copy ansible deploy stuff] *******************************************************************************
+2021-07-01 12:56:25,261 p=38352 u=safety n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+2021-07-01 12:56:25,262 p=38352 u=safety n=ansible | failed: [localhost] (item=rails/deploy_tasks) => {"ansible_loop_var": "item", "changed": false, "item": "rails/deploy_tasks", "msg": "Could not find or access 'rails/deploy_tasks'\nSearched in:\n\t/Users/safety/ansible/rails/files/rails/deploy_tasks\n\t/Users/safety/ansible/rails/rails/deploy_tasks\n\t/Users/safety/ansible/rails/files/rails/deploy_tasks\n\t/Users/safety/ansible/rails/rails/deploy_tasks on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+2021-07-01 12:56:25,320 p=38352 u=safety n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+2021-07-01 12:56:25,320 p=38352 u=safety n=ansible | failed: [localhost] (item=rails/roles) => {"ansible_loop_var": "item", "changed": false, "item": "rails/roles", "msg": "Could not find or access 'rails/roles'\nSearched in:\n\t/Users/safety/ansible/rails/files/rails/roles\n\t/Users/safety/ansible/rails/rails/roles\n\t/Users/safety/ansible/rails/files/rails/roles\n\t/Users/safety/ansible/rails/rails/roles on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+2021-07-01 12:56:25,376 p=38352 u=safety n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+2021-07-01 12:56:25,379 p=38352 u=safety n=ansible | failed: [localhost] (item=rails/templates) => {"ansible_loop_var": "item", "changed": false, "item": "rails/templates", "msg": "Could not find or access 'rails/templates'\nSearched in:\n\t/Users/safety/ansible/rails/files/rails/templates\n\t/Users/safety/ansible/rails/rails/templates\n\t/Users/safety/ansible/rails/files/rails/templates\n\t/Users/safety/ansible/rails/rails/templates on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+2021-07-01 12:56:25,457 p=38352 u=safety n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+2021-07-01 12:56:25,457 p=38352 u=safety n=ansible | failed: [localhost] (item=rails/ansible.cfg) => {"ansible_loop_var": "item", "changed": false, "item": "rails/ansible.cfg", "msg": "Could not find or access 'rails/ansible.cfg'\nSearched in:\n\t/Users/safety/ansible/rails/files/rails/ansible.cfg\n\t/Users/safety/ansible/rails/rails/ansible.cfg\n\t/Users/safety/ansible/rails/files/rails/ansible.cfg\n\t/Users/safety/ansible/rails/rails/ansible.cfg on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+2021-07-01 12:56:25,512 p=38352 u=safety n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+2021-07-01 12:56:25,512 p=38352 u=safety n=ansible | failed: [localhost] (item=rails/deploy.yml) => {"ansible_loop_var": "item", "changed": false, "item": "rails/deploy.yml", "msg": "Could not find or access 'rails/deploy.yml'\nSearched in:\n\t/Users/safety/ansible/rails/files/rails/deploy.yml\n\t/Users/safety/ansible/rails/rails/deploy.yml\n\t/Users/safety/ansible/rails/files/rails/deploy.yml\n\t/Users/safety/ansible/rails/rails/deploy.yml on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+2021-07-01 12:56:25,567 p=38352 u=safety n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+2021-07-01 12:56:25,567 p=38352 u=safety n=ansible | failed: [localhost] (item=rails/setup.yml) => {"ansible_loop_var": "item", "changed": false, "item": "rails/setup.yml", "msg": "Could not find or access 'rails/setup.yml'\nSearched in:\n\t/Users/safety/ansible/rails/files/rails/setup.yml\n\t/Users/safety/ansible/rails/rails/setup.yml\n\t/Users/safety/ansible/rails/files/rails/setup.yml\n\t/Users/safety/ansible/rails/rails/setup.yml on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+2021-07-01 12:56:25,571 p=38352 u=safety n=ansible | PLAY RECAP *****************************************************************************************************
+2021-07-01 12:56:25,571 p=38352 u=safety n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2021-07-01 13:07:47,018 p=46591 u=safety n=ansible | [WARNING]: Unable to parse /Users/safety/ansible/rails/hosts.ini as an inventory source
+
+2021-07-01 13:07:47,019 p=46591 u=safety n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-07-01 13:07:47,025 p=46591 u=safety n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not
+match 'all'
+
+2021-07-01 13:07:54,322 p=46591 u=safety n=ansible | PLAY [This is a hello-world example] ***************************************************************************
+2021-07-01 13:07:54,351 p=46591 u=safety n=ansible | TASK [Gathering Facts] *****************************************************************************************
+2021-07-01 13:07:55,792 p=46591 u=safety n=ansible | ok: [localhost]
+2021-07-01 13:07:55,837 p=46591 u=safety n=ansible | TASK [check for rails app] *************************************************************************************
+2021-07-01 13:07:56,701 p=46591 u=safety n=ansible | ok: [localhost]
+2021-07-01 13:07:56,711 p=46591 u=safety n=ansible | TASK [exit if rails app already exists with this name] *********************************************************
+2021-07-01 13:07:56,789 p=46591 u=safety n=ansible | skipping: [localhost]
+2021-07-01 13:07:56,801 p=46591 u=safety n=ansible | TASK [rails new.] **********************************************************************************************
+2021-07-01 13:09:13,706 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:13,728 p=46591 u=safety n=ansible | TASK [Copy ansible deploy stuff] *******************************************************************************
+2021-07-01 13:09:16,117 p=46591 u=safety n=ansible | changed: [localhost] => (item=deploy_tasks)
+2021-07-01 13:09:30,877 p=46591 u=safety n=ansible | changed: [localhost] => (item=roles)
+2021-07-01 13:09:33,795 p=46591 u=safety n=ansible | changed: [localhost] => (item=templates)
+2021-07-01 13:09:34,678 p=46591 u=safety n=ansible | changed: [localhost] => (item=ansible.cfg)
+2021-07-01 13:09:35,573 p=46591 u=safety n=ansible | changed: [localhost] => (item=deploy.yml)
+2021-07-01 13:09:36,420 p=46591 u=safety n=ansible | changed: [localhost] => (item=setup.yml)
+2021-07-01 13:09:36,437 p=46591 u=safety n=ansible | TASK [vars] ****************************************************************************************************
+2021-07-01 13:09:37,344 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:37,354 p=46591 u=safety n=ansible | TASK [requirements] ********************************************************************************************
+2021-07-01 13:09:38,358 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:38,367 p=46591 u=safety n=ansible | TASK [Creates directory] ***************************************************************************************
+2021-07-01 13:09:39,176 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:39,191 p=46591 u=safety n=ansible | TASK [githubactions] *******************************************************************************************
+2021-07-01 13:09:39,899 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:39,907 p=46591 u=safety n=ansible | TASK [success file] ********************************************************************************************
+2021-07-01 13:09:41,640 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:41,656 p=46591 u=safety n=ansible | TASK [favicon] *************************************************************************************************
+2021-07-01 13:09:42,679 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:42,694 p=46591 u=safety n=ansible | TASK [hosts] ***************************************************************************************************
+2021-07-01 13:09:43,800 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:43,812 p=46591 u=safety n=ansible | TASK [Makefile] ************************************************************************************************
+2021-07-01 13:09:45,276 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:45,343 p=46591 u=safety n=ansible | TASK [Ansible master key] **************************************************************************************
+2021-07-01 13:09:46,031 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:46,074 p=46591 u=safety n=ansible | TASK [Ansible db_password] *************************************************************************************
+2021-07-01 13:09:46,552 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:46,560 p=46591 u=safety n=ansible | TASK [Ansible gitignore] ***************************************************************************************
+2021-07-01 13:09:46,940 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:46,949 p=46591 u=safety n=ansible | TASK [bundle install] ******************************************************************************************
+2021-07-01 13:09:48,254 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:48,263 p=46591 u=safety n=ansible | TASK [rails into readme] ***************************************************************************************
+2021-07-01 13:09:49,325 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:49,333 p=46591 u=safety n=ansible | TASK [Running pending migrations] ******************************************************************************
+2021-07-01 13:09:54,181 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:54,189 p=46591 u=safety n=ansible | TASK [Running pending migrations] ******************************************************************************
+2021-07-01 13:09:55,447 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:55,464 p=46591 u=safety n=ansible | TASK [readme] **************************************************************************************************
+2021-07-01 13:09:56,184 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:56,196 p=46591 u=safety n=ansible | TASK [git add] *************************************************************************************************
+2021-07-01 13:09:56,686 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:56,694 p=46591 u=safety n=ansible | TASK [git commit] **********************************************************************************************
+2021-07-01 13:09:57,142 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:57,150 p=46591 u=safety n=ansible | TASK [git main] ************************************************************************************************
+2021-07-01 13:09:57,556 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:57,565 p=46591 u=safety n=ansible | TASK [print app location.] *************************************************************************************
+2021-07-01 13:09:58,222 p=46591 u=safety n=ansible | changed: [localhost]
+2021-07-01 13:09:58,240 p=46591 u=safety n=ansible | PLAY RECAP *****************************************************************************************************
+2021-07-01 13:09:58,240 p=46591 u=safety n=ansible | localhost                  : ok=24   changed=22   unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   

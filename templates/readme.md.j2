@@ -1,0 +1,59 @@
+# {{ app_name }}
+
+Template application built with ansible playbook from https://github.com/cerico/oakwell
+
+Deploys to https://{{ url }}
+
+## Whats included
+
+- Ruby on Rails starter application
+- Pre-configured Ansible playbook with ansistrano for deployment
+
+## Prerequisites
+
+1. ansistrano-deploy
+
+```
+ansible-galaxy install ansistrano.deploy
+```
+
+## How to run
+
+Create this repo if it doesn't exist and push
+
+```
+# gh repo create {{ app_name }} --public -y
+# git push origin main
+```
+
+## Setup
+```
+# make setup
+```
+
+Runs ansible-playbook to 
+
+- Set up the application
+- Create and migrate the database
+- Configure nginx for correct url
+- Set up ssl via lets-encrypt
+
+## Deploy
+```
+# make deploy
+```
+
+Runs ansible-playbook to deploy to correct url
+
+Site should be available at https://{{ url }}. If you haven't done anything with the Rails app yet, you can still check if the deployment was successful at https://{{ url }}/success.html
+
+## Technology Stack
+
+- {{ rails_version.stdout }}
+- Ruby {{ ruby_version }}
+- Passenger
+- Nginx
+- Postgresql
+- Ansible 2.9
+- Ubuntu 20.04 hosted at Contabo
+- LetsEncrypt Certbot

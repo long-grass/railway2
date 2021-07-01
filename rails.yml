@@ -1,0 +1,135 @@
+---
+- name: This is a hello-world example
+  hosts: localhost
+  connection: local 
+
+  vars_prompt:
+    - name: app_name
+      prompt: What is your app_name?
+      private: no
+
+  vars_files:
+    - config
+
+  vars:
+    app_location: "{{ app_directory | default('~') }}/{{ app_name }}"
+    url: "{{ app_name }}.{{ remote_domain | default('example.com') }}"
+
+  tasks:
+    - name: check for rails app
+      stat: path={{ app_location }}
+      register: rails
+
+    - name: exit if rails app already exists with this name
+      fail: msg="This rails app already exists - edit vars with new info"
+      when: rails.stat.exists
+
+    - name: rails new.
+      command: "rails new {{ app_location }} --database=postgresql --skip-coffee"
+    
+    - name: Copy ansible deploy stuff
+      copy:
+        src: "{{ item }}"
+        dest: "{{ app_location }}/.deploy"
+      with_items:
+      - deploy_tasks
+      - roles
+      - templates
+      - ansible.cfg
+      - deploy.yml
+      - setup.yml
+
+    - name: vars
+      template:
+        src: app-vars.yml.j2
+        dest: "{{ app_location }}/.deploy/app-vars.yml"
+
+    - name: requirements
+      copy:
+        src: requirements.yml
+        dest: "{{ app_location }}/.deploy/requirements.yml"
+
+    - name: Creates directory
+      file:
+        path: "{{ app_location }}/.github/workflows"
+        state: directory
+
+    - name: githubactions
+      template:
+        src: github.yml.j2
+        dest: "{{ app_location }}/.github/workflows/deploy.yml"
+
+    - name: success file
+      copy:
+        src: success.html
+        dest: "{{ app_location }}/public/success.html"
+
+    - name: favicon
+      copy:
+        src: favicon.ico
+        dest: "{{ app_location }}/public/favicon.ico"
+
+    - name: hosts
+      template:
+        src: hosts.ini.j2
+        dest: "{{ app_location }}/.deploy/hosts.ini"
+
+    - name: Makefile
+      template:
+        src: Makefile.j2
+        dest: "{{ app_location }}/Makefile"
+
+    - name: Ansible master key
+      shell: "echo master_key: $(cat {{ app_location }}/config/master.key) >> {{ app_location }}/.deploy/secrets"
+
+    - name: Ansible db_password
+      shell: "echo db_password: $(cat {{ app_location }}/config/master.key) >> {{ app_location }}/.deploy/secrets"
+
+    - name: Ansible gitignore
+      shell: "echo .deploy/secrets >> {{ app_location }}/.gitignore"
+
+    - name: bundle install
+      command: bundle install
+      args:
+        chdir: "{{ app_location }}"
+
+    - name: rails into readme
+      command: ./bin/rails -v
+      args:
+        chdir: "{{ app_location }}"
+      register: rails_version
+
+    - name: Running pending migrations
+      command: ./bin/rake db:create
+      args:
+        chdir: "{{ app_location }}"
+
+    - name: Running pending migrations
+      command: ./bin/rake db:migrate
+      args:
+        chdir: "{{ app_location }}"
+
+    - name: readme
+      template:
+        src: readme.md.j2
+        dest: "{{ app_location }}/README.md"
+
+    - name: git add
+      command: git add . 
+      args:
+        chdir: "{{ app_location }}"
+
+    - name: git commit 
+      command: git commit -m first
+      args:
+        chdir: "{{ app_location }}"
+
+    - name: git main
+      command: git branch -m main
+      args:
+        chdir: "{{ app_location }}"
+
+    - name: print app location.
+      copy:
+        content: "{{ app_location }}"
+        dest: location
