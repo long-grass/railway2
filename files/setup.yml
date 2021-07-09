@@ -55,3 +55,14 @@
   roles: 
     - role: postgresql
       tags: postgresql
+
+- hosts: local
+  tasks:
+    - name: Creates github directory
+      file:
+        path: "{{ playbook_dir }}/.github/workflows"
+        state: directory
+    - name: gh action
+      copy:
+        src: setup.yml
+        dest: "{{ playbook_dir }}/.github/workflows/deploy.yml"

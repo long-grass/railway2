@@ -4,3 +4,13 @@ remote_domain: 'io37.ch'
 server: 'cheboksaru'
 
 email: ''
+
+deploy_user_public_key_local_path: '~/.ssh/cheboksaru/deploy_rsa.pub'
+root_user_public_key_local_path: '~/.ssh/cheboksaru/root_rsa.pub'
+
+ruby_version: '2.7.1'
+deploy_user: '{{ deploy_user }}'
+postgresql_version: '13'
+postgresql_locales:
+  - 'en_US.UTF-8'
+  - 'en_GB.UTF-8'

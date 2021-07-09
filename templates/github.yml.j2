@@ -25,8 +25,12 @@ jobs:
           mkdir -p ~/.ssh/{{ server }}
           echo "$SSH_KEY" > ~/.ssh/{{ server }}/root_rsa
           chmod 600 ~/.ssh/{{ server }}/root_rsa
+          echo "$SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "$DEPLOY_KEY" > ~/.ssh/{{ server }}/deploy_rsa
+          chmod 600 ~/.ssh/{{ server }}/deploy_rsa
           cat >>~/.ssh/config <<END
-          Host staging
+          Host "{{ remote_domain }}"
             HostName $SSH_HOST
             User $SSH_USER
             IdentityFile ~/.ssh/{{ server }}/root_rsa
@@ -35,6 +39,7 @@ jobs:
         env:
           SSH_USER: root
           SSH_KEY: {{' ${{ secrets.ROOT_RSA }}' }}
+          DEPLOY_KEY: {{' ${{ secrets.DEPLOY_RSA }}' }}
           SSH_HOST: {{ remote_domain }}
 
       - name: Configure SSH ii
@@ -52,5 +57,6 @@ jobs:
         env:
           MASTER_KEY: {{' ${{ secrets.MASTER_KEY }}' }}
           DB_PASSWORD: {{' ${{ secrets.MASTER_KEY }}' }}
+          KEY_PATH: ~/.ssh/{{ server }}/deploy_rsa
         run: >
-          ansible-playbook -i .deploy/hosts.ini .deploy/deploy.yml -e "master_key=$MASTER_KEY db_password=$MASTER_KEY ansistrano_deploy_branch=$GITHUB_SHA" -vv
+          ansible-playbook -i .deploy/hosts.ini .deploy/deploy.yml -e "master_key=$MASTER_KEY db_password=$MASTER_KEY ansistrano_deploy_branch=$GITHUB_SHA ansistrano_git_identity_key_path=$KEY_PATH" -vv

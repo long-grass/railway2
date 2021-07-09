@@ -38,6 +38,7 @@
       - ansible.cfg
       - deploy.yml
       - setup.yml
+      - ci.yml
 
     - name: vars
       template:
@@ -54,10 +55,15 @@
         path: "{{ app_location }}/.github/workflows"
         state: directory
 
+    - name: Creates template directory
+      file:
+        path: "{{ app_location }}/.deploy/files"
+        state: directory
+
     - name: githubactions
       template:
         src: github.yml.j2
-        dest: "{{ app_location }}/.github/workflows/deploy.yml"
+        dest: "{{ app_location }}/.deploy/files/deploy.yml"
 
     - name: success file
       copy:

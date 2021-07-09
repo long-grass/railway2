@@ -34,6 +34,10 @@
       become_user: root
   
   tasks:
+    - name: stop nginx
+      become: true
+      become_user: root
+      shell: "nginx -s stop"
     - name: certify
       become: true
       become_user: root
