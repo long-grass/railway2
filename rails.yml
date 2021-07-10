@@ -136,6 +136,4 @@
         chdir: "{{ app_location }}"
 
     - name: print app location.
-      copy:
-        content: "{{ app_location }}"
-        dest: location
+      shell: "echo {{ app_location }} > location"
